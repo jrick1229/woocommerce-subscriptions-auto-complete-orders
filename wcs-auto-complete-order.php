@@ -1,8 +1,8 @@
 <?php
 /**
 * Plugin Name: WooCommerce Subscriptions - Auto-Complete Orders
-* Plugin URI: https://github.com/Prospress/woocommerce-subscriptions-order-complete-orders
-* Description: Auto completes orders upon subscription creation and upon payment confirmation on renewal orders.
+* Plugin URI: https://github.com/Prospress/woocommerce-subscriptions-auto-complete-orders
+* Description: Auto-completes all orders after successful payment - even subscription renewals.
 * Author: Prospress Inc.
 * Author URI: http://prospress.com/
 * Version: 1.0
@@ -31,7 +31,6 @@
 * @since		1.0
 */
 
-add_action( 'woocommerce_thankyou', 'woocommerce_subscriptions_auto_complete_order' );
 add_action( 'woocommerce_payment_complete', 'woocommerce_subscriptions_auto_complete_order' );
 function woocommerce_subscriptions_auto_complete_order( $order_id ) { 
     if ( ! $order_id ) {

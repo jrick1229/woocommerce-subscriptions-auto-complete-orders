@@ -2,8 +2,7 @@
 
  For use with [WooCommerce Subscriptions](https://woocommerce.com/products/woocommerce-subscriptions/).
 
-Install and activate this plugin. It will auto-complete orders upon subscription creation and upon payment confirmation for renewal orders.
-
+Install and activate this plugin. It will auto-complete all orders after successful payment - even subscription renewals.
 ## Requirements
 
 This plugin was built while WC 3.3.1 and WCS 2.2.17 were current, and have not been tested on any other versions. Use at own risk.
