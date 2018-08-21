@@ -31,7 +31,11 @@
  * @since   1.0.0
  */
 
-add_filter( 'woocommerce_payment_complete_order_status', 'wcs_aco_return_completed' );
+/**
+* Autocomplete subscription 'parent' and 'renewal' orders
+*/
+
+add_filter( 'woocommerce_payment_complete_order_status', 'wcs_aco_return_completed', 10, 3);
 /**
  * Return "completed" as an order status.
  *
@@ -40,8 +44,34 @@ add_filter( 'woocommerce_payment_complete_order_status', 'wcs_aco_return_complet
  * @since 1.1.0
  *
  * @param string $status The current default status.
+ * @param object $order The current order.
+ * @param int $order_id The current order ID.
  * @return string The filtered default status.
  */
-function wcs_aco_return_completed( $status ) {
-	return 'completed';
+function wcs_aco_return_completed( $status, $order, $order_id ) {
+
+    if( wcs_order_contains_subscription($order, array('parent','renewal') ) ) {
+        return 'completed';
+    }
+
+    return $status;
+}
+
+/**
+* Autocomplete 'simple' orders
+*/
+
+add_action( 'woocommerce_thankyou', 'custom_woocommerce_auto_complete_order' );
+/**
+ * Updates the status of a correctly processed order to 'Complete'
+ *
+ * @param int $order_id The current order ID.
+ */
+function custom_woocommerce_auto_complete_order( $order_id ) { 
+    if ( ! $order_id ) {
+        return;
+    }
+
+    $order = wc_get_order( $order_id );
+    $order->update_status( 'completed' );
 }
