@@ -6,7 +6,7 @@ Install and activate this plugin. It will auto-complete all orders after success
 
 ## Requirements
 
-This plugin was built while WC 3.3.1 and WCS 2.2.17 were current, and has not been tested on any other versions. Use at own risk.
+This plugin was built while WC 3.6.1 and WCS 2.5.3 were current, and has not been tested on any other versions. Use at own risk.
 
 ## Installation
 
